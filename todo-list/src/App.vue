@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Todos :todos="todos"></Todos>
+    <Todos :todos="todos" @del-todos="deleteTodo"></Todos>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
         {
           id: 2,
           title: 'Second todo title',
-          completed: false
+          completed: true
         },
         {
           id: 3,
@@ -33,7 +33,12 @@ export default {
       ]
     }
   },
-  
+  methods: {
+    deleteTodo(id){
+      console.log(this.todos)
+      this.todos = this.todos.filter(todo => todo.id !== id)
+    }
+  },
 }
 </script>
 
@@ -46,4 +51,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>
